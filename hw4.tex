@@ -184,7 +184,7 @@ One important note for fitting Gaussians is that sometimes we can get degenerate
 \mathrm{ll}(\bX, \bmu, \bSigma, \btheta) &= \log \prod_{i=1}^n p(\bx_i | \bmu, \bSigma, \btheta)\\
 &= \log \prod_{i=1}^n \sum_{k = 1}^K \theta_k \normal(x_i | \bmu_k, \Sigma_k)\\
 &=  \sum_{i=1}^n \log \left(\sum_{k = 1}^K \theta_k \normal(x_i | \bmu_k, \Sigma_k) \right)\\
-&=  \sum_{i=1}^n \log \left(\sum_{k = 1}^K  \frac{\theta_k}{\sqrt{(2\pi)^k|\Sigma_k|}} \exp\left(- \frac{1}{2} (\bx_i - \bmu_k)^\top \Sigma_k^{-1} (\bx_i - \bmu_k)\right) \right).
+&=  \sum_{i=1}^n \log \left(\sum_{k = 1}^K  \frac{\theta_k}{\sqrt{(2\pi)^d|\Sigma_k|}} \exp\left(- \frac{1}{2} (\bx_i - \bmu_k)^\top \Sigma_k^{-1} (\bx_i - \bmu_k)\right) \right).
 \end{aligned}
 \end{equation}
 With some manipulation, you should be able to use the log-sum-exp trick to compute the terms in the summation while avoiding numerical underflow. Notice that the term inside the innermost summation can be written as the $\exp$ of the log density of a Gaussian distribution. The log Gaussian density is returned by the provided function \texttt{gaussian\_ll}.
